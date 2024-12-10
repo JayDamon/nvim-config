@@ -45,6 +45,9 @@ return {
       ensure_installed = {
         "ts_ls",
         "eslint",
+        "html",
+        "angularls",
+        "helm_ls",
         "jdtls",
         "lua_ls",
         "jsonls",
