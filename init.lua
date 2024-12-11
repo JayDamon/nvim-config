@@ -59,12 +59,12 @@ vim.keymap.set("v", "<space>x", ":lua<CR>")
 
 -- Highlight when yanking text
 vim.api.nvim_create_autocmd('TextYankPost', {
-  desc = 'Highlight when yanking text',
-  group = vim.api.nvim_create_augroup('highlight-yank', { clear = true }),
-  callback = function()
-	  vim.highlight.on_yank()
-  end,
+    desc = 'Highlight when yanking text',
+    group = vim.api.nvim_create_augroup('highlight-yank', { clear = true }),
+    callback = function()
+        vim.highlight.on_yank()
+    end,
 })
 
 require("config.lazy")
-vim.cmd[[colorscheme tokyonight-night]]
+vim.cmd [[colorscheme tokyonight-night]]
