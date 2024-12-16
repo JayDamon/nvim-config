@@ -2,7 +2,7 @@ vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
 vim.g.have_nerd_font = true
-vim.opt.shiftwidth = 4
+-- vim.opt.shiftwidth = 4
 
 vim.opt.number = true
 vim.opt.relativenumber = true
@@ -59,11 +59,11 @@ vim.keymap.set("v", "<space>x", ":lua<CR>")
 
 -- Highlight when yanking text
 vim.api.nvim_create_autocmd('TextYankPost', {
-    desc = 'Highlight when yanking text',
-    group = vim.api.nvim_create_augroup('highlight-yank', { clear = true }),
-    callback = function()
-        vim.highlight.on_yank()
-    end,
+  desc = 'Highlight when yanking text',
+  group = vim.api.nvim_create_augroup('highlight-yank', { clear = true }),
+  callback = function()
+    vim.highlight.on_yank()
+  end,
 })
 
 require("config.lazy")

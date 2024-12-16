@@ -20,6 +20,7 @@ return {
 
     mason_tool_installer.setup({
       ensure_installed = {
+        "clangd",
         "gopls",
         "google-java-format",
         "prettier",
