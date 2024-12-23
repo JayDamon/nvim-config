@@ -13,6 +13,9 @@
 #### LSP and Autocompletion
 [mason lspconfig](https://github.com/williamboman/mason-lspconfig.nvim)
 [nvim cmp](https://github.com/hrsh7th/nvim-cmp)
+* Replaced nvim cmp with blink
+[blink.cmp](https://cmp.saghen.dev/)
 
 #### Other
 [Mini](https://github.com/echasnovski/mini.nvim)
+* [Files](https://github.com/echasnovski/mini.files)

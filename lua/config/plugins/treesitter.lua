@@ -17,6 +17,15 @@ return {
           "markdown_inline"
         },
 
+        refactor = {
+          smart_rename = {
+            enable = true,
+            keymaps = {
+              smart_rename = "grr",
+            }
+          }
+        },
+
         -- Install parsers synchronously (only applied to `ensure_installed`)
         sync_install = false,
 
