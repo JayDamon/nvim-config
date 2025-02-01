@@ -64,8 +64,6 @@ vim.keymap.set('n', 'grn', vim.lsp.buf.rename)
 vim.keymap.set('n', 'grr', vim.lsp.buf.references)
 vim.keymap.set('n', 'gra', vim.lsp.buf.code_action)
 
-vim.keymap.set('n', '-', "<CMD>Oil<CR>", { desc = "Open parent directory" })
-
 -- Highlight when yanking text
 vim.api.nvim_create_autocmd('TextYankPost', {
   desc = 'Highlight when yanking text',
@@ -101,3 +99,5 @@ end)
 vim.keymap.set("n", "<space>example", function()
   vim.fn.chansend(job_id, { "ls -al\r\n" })
 end)
+
+--require("obsidian")

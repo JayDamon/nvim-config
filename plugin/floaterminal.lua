@@ -1,5 +1,5 @@
 vim.keymap.set("t", "<esc><esc>", "<c-\\><c-n>")
-
+vim.keymap.set("t", "<esc><esc><esc>", "<c-\\><c-n>:q<Enter>")
 local state = {
   floating = {
     buf = -1,
@@ -24,6 +24,7 @@ local function open_floating_window(opts)
 
   -- Create a new buffer
   local buf = nil
+  print(opts.buf)
   if vim.api.nvim_buf_is_valid(opts.buf) then
     buf = opts.buf
   else
@@ -50,7 +51,38 @@ end
 
 -- Optionally bind this to a key
 -- vim.api.nvim_set_keymap('n', '<Leader>f', ':lua open_floating_window({})<CR>', { noremap = true, silent = true })
+local run_c = function()
+  if not vim.api.nvim_win_is_valid(state.floating.win) then
+    vim.cmd("below split")
+    vim.cmd.terminal()
+    vim.api.nvim_chan_send(vim.bo.channel, "./run.sh\n")
+    vim.api.nvim_feedkeys("a", "t", false)
+  else
+    vim.api.nvim_win_hide(state.floating.win)
+  end
+end
 
+local moneymaker_run = function()
+  if not vim.api.nvim_win_is_valid(state.floating.win) then
+    vim.cmd("below split")
+    vim.cmd.terminal()
+    vim.api.nvim_chan_send(vim.bo.channel, "cd ./moneymaker-run\n")
+    vim.api.nvim_feedkeys("a", "t", false)
+  else
+    vim.api.nvim_win_hide(state.floating.win)
+  end
+end
+
+local docker_ls = function()
+  if not vim.api.nvim_win_is_valid(state.floating.win) then
+    vim.cmd("below split")
+    vim.cmd.terminal()
+    vim.api.nvim_chan_send(vim.bo.channel, "docker ps\n")
+    vim.api.nvim_feedkeys("a", "t", false)
+  else
+    vim.api.nvim_win_hide(state.floating.win)
+  end
+end
 -- local buf, win = open_floating_window()
 -- print(buf, win)
 local toggle_terminal = function()
@@ -63,5 +95,9 @@ local toggle_terminal = function()
     vim.api.nvim_win_hide(state.floating.win)
   end
 end
+
 vim.api.nvim_create_user_command("Floaterminal", toggle_terminal, {})
 vim.keymap.set("n", "<space>ft", toggle_terminal)
+vim.keymap.set("n", "<space><space>r", run_c)
+vim.keymap.set("n", "<space><space>fc", docker_ls)
+vim.keymap.set("n", "<space><space>mr", moneymaker_run)
