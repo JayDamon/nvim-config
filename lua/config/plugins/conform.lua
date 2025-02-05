@@ -8,11 +8,26 @@ return {
         html = { "htmlbeautifier" },
         bash = { "beautysh" },
         yaml = { "yamlfix" },
-        css = { { "prettierd", "pretier" } },
-        scss = { { "prettierd", "prettier" } },
-        sh = { { "shellcheck" } },
-        go = { { "gofmt" } },
+        css = { "prettierd" },
+        scss = { "prettierd" },
+        javascript = { "prettierd" },
+        javascriptreact = { "prettierd" },
+        typescript = { "prettierd" },
+        typescriptreact = { "prettierd" },
+        sh = { "shellcheck" },
+        go = { "gofmt" },
       },
+      format_on_save = {
+        timeout_ms = 500,
+        lsp_fallback = true,
+      }
+      --      formatters = {
+      --        prettierd = {
+      --          condition = function()
+      --            return vim.loop.fs_realpath(".prettierc.js") ~= nil or vim.loop.fs_realpath(".prettierc.mjs") ~= nil
+      --          end,
+      --        }
+      --      }
     })
 
     vim.keymap.set({ "n", "v" }, "<leader>l", function()

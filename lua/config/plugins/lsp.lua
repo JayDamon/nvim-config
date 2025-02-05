@@ -26,11 +26,15 @@ return {
             local client = vim.lsp.get_client_by_id(args.data.client_id)
             if not client then return end
 
+            -- I Am not sure if this is doing anything anymore
+            --  It is supposed to provide format on save i believe, but i do that
+            --  via the conform plugin. Neet to figure out which is the best way
+            --  to do things
             if client.supports_method('textDocument/formatting') then
               vim.api.nvim_create_autocmd('BufWritePre', {
                 buffer = args.buf,
                 callback = function()
-                  vim.lsp.buf.format({ bufnr = args.buf, id = client.id })
+                  --vim.lsp.buf.format({ bufnr = args.buf, id = client.id })
                 end,
               })
             end
