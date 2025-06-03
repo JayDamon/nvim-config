@@ -1,3 +1,5 @@
+_G.llm = 'copilot'
+
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
@@ -63,6 +65,9 @@ vim.keymap.set("n", "<M-k>", "<cmd>cprev<CR>")
 vim.keymap.set('n', 'grn', vim.lsp.buf.rename)
 vim.keymap.set('n', 'grr', vim.lsp.buf.references)
 vim.keymap.set('n', 'gra', vim.lsp.buf.code_action)
+
+vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
+vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
 
 -- Highlight when yanking text
 vim.api.nvim_create_autocmd('TextYankPost', {
